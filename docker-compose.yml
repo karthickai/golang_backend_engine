@@ -1,19 +1,22 @@
-version: '3.8'
+version: '3'
 services:
   backend:
     build:
       context: .
       dockerfile: ./Dockerfile
     ports:
-      - "5000:80"
+      - "3000:3000"
     environment:
-      - REDIS_DSN=http://redis:6379
-      - MONGODB_URI="mongodb://mongodb:27017"
+      - REDIS_DSN=redis:6379
+      - MONGODB_URI=mongodb://mongodb:27017
       - ADMIN_MAIL=karthick.pannerselvam@humetis.in
       - ADMIN_NAME=Kumar
-    depends_on:
+    links:
       - redis
       - mongodb
+    depends_on:
+      - mongodb
+      - redis
   redis:
     image: redis
     ports:
