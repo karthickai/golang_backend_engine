@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Example Pdf</title>
+    <style>
+        * {
+            font-family: sans-serif; /* Change your font family */
+        }
+
+        .content-table {
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 0.9em;
+            min-width: 400px;
+            border-radius: 5px 5px 0 0;
+            overflow: hidden;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .content-table thead tr {
+            background-color: #009879;
+            color: #ffffff;
+            text-align: left;
+            font-weight: bold;
+        }
+
+        .content-table th,
+        .content-table td {
+            padding: 12px 15px;
+        }
+
+        .content-table tbody tr {
+            border-bottom: 1px solid #dddddd;
+        }
+
+        .content-table tbody tr:nth-of-type(even) {
+            background-color: #f3f3f3;
+        }
+
+        .content-table tbody tr:last-of-type {
+            border-bottom: 2px solid #009879;
+        }
+
+        .content-table tbody tr.active-row {
+            font-weight: bold;
+            color: #009879;
+        }
+
+    </style>
+</head>
+<body>
+<h2>HuMetis Group - Employee Report</h2>
+<h4></h4>
+<p><a style="font-weight: bold"> Employee Name :</a> <a> {{.Detail.EmployeeName}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></p>
+<p><a style="font-weight: bold"> Annual Salary :</a>
+    <a> ${{.Detail.AnnualSalary}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+    <a style="font-weight: bold"> LCA Salary :</a> <a> ${{.Detail.LCASalary}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+    <a style="font-weight: bold"> P1 Rate :</a> <a> ${{.Detail.P1Rate}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+    <a style="font-weight: bold"> P1 Percentage :</a> <a> {{.Detail.P1Percentage}}%&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+    <a style="font-weight: bold"> P2 Rate :</a> <a> ${{.Detail.P2Rate}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+    <a style="font-weight: bold"> P2Percentage :</a> <a> {{.Detail.P2Percentage}}%&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+</p>
+
+
+<table class="content-table">
+    <thead>
+    <tr>
+        <th colspan="2" rowspan="1">Payroll Period&nbsp;&nbsp;</th>
+        <th colspan="11" rowspan="1"></th>
+        <th colspan="2" rowspan="1">Number of Payrolls available in Reserve</th>
+
+    </tr>
+    <tr>
+        <th>From&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+        <th>To&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+        <th>Hours P1</th>
+        <th>Hours P2</th>
+        <th>Medical CTC</th>
+        <th>Base Corp Role</th>
+        <th>Bonus</th>
+        <th>Total Mo Budget</th>
+        <th>Salary</th>
+        <th>Comp exp Adv</th>
+        <th>Exp WD</th>
+        <th>Bonus WD</th>
+        <th>Exp-bonus Fund</th>
+        <th>No. Of Selected PayRoll</th>
+        <th>No. Of LCA PayRoll</th>
+    </tr>
+    </thead>
+    <tbody>
+    {{range .Reports}}
+
+        <tr>
+            <td>{{.From}}</td>
+            <td>{{.To}}</td>
+            <td>{{.HrsPayRollPeriod1}}</td>
+            <td>{{.HrsPayRollPeriod2}}</td>
+            <td>{{.MedicalCTC}}</td>
+            <td>{{.BaseCorpRole}}</td>
+            <td>{{.COMMBonus}}</td>
+            <td>{{.TotalMoBudget}}</td>
+            <td>{{.Salary}}</td>
+            <td>{{.AdvCompExp}}</td>
+            <td>{{.ExpWD}}</td>
+            <td>{{.BonusWD}}</td>
+            <td>{{.BudgetBalance}}</td>
+            <td>{{.NumberOfSelectedPayRollReserve}}</td>
+            <td>{{.NumberOfLCAPayRoll}}</td>
+
+        </tr>
+    {{end}}
+
+    </tbody>
+</table>
+</body>
+</html>
